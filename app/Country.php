@@ -11,4 +11,6 @@ class Country extends Model
     public function city() {
         return $this->hasMany('App\City');
     }
+    
+    protected $guarded = ['id', 'created_at', 'updated_at']; 
 }

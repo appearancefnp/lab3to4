@@ -7,6 +7,7 @@
 			<td> City Name </td> 
 			<td> Country Id </td>
 			<td>  </td>
+                        <td>  </td>
 		</tr>
 	@foreach ($cities as $city)
 		<tr> 
@@ -14,6 +15,7 @@
 			<td> {{ $city->city_name }} </td>
 			<td> {{ $city->country_id }} </td>
 			<td> <input type="button" value="delete" onclick="deleteCity({{ $city->city_id }})"> </td>
+                        <td> <input type="button" value="update" onclick="updateCity({{ $city->city_id }})">  </td>
 		</td>
 	@endforeach
 	</table>
@@ -26,5 +28,8 @@
 	function deleteCity(cityID) {
 		window.location.href="/cities/delete/"+cityID;
 	}
+        function updateCity(cityID) {
+                window.location.href="/cities/update/"+cityID;
+        }
 </script>
 
