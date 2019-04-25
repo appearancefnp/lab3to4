@@ -60,11 +60,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $country = Country::where('country_id', '=', $id)->first();
+        return view('country_update', ['country' => $country]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -74,9 +73,16 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'country_name' => 'required',
+            'country_code' => 'required',
+        ]);
+        
+        Country::where('country_id','=',$id)->update(['country_name' => $request->country_name, 'country_code' => $request->country_code]);
+        
+        return redirect('/countries')->with('success');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -87,5 +93,10 @@ class CountryController extends Controller
     {
         Country::where('country_id', '=', $id)->delete();
         return redirect('countries/');
+    }
+    public function search($name)
+    {
+        $results = Country::where('country_name', 'LIKE', '%'.$name.'%')->get();
+        return view('results', ['countries' => $results]);
     }
 }

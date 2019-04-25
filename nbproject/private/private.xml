@@ -5,10 +5,9 @@
         <group>
             <file>file:/E:/wamp64/www/KARLIS/resources/views/cities.blade.php</file>
             <file>file:/E:/wamp64/www/KARLIS/app/Http/Controllers/CountryController.php</file>
-            <file>file:/E:/wamp64/www/KARLIS/routes/web.php</file>
             <file>file:/E:/wamp64/www/KARLIS/app/Http/Controllers/CityController.php</file>
-            <file>file:/E:/wamp64/www/KARLIS/resources/views/countries.blade.php</file>
-            <file>file:/E:/wamp64/www/KARLIS/resources/views/city_new.blade.php</file>
+            <file>file:/E:/wamp64/www/KARLIS/routes/web.php</file>
+            <file>file:/E:/wamp64/www/KARLIS/resources/views/results.blade.php</file>
         </group>
     </open-files>
 </project-private>

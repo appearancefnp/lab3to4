@@ -55,7 +55,8 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $city = City::where('city_id', '=', $id)->first();
+        return view('city_update', ['city' => $city]);
     }
 
     /**
@@ -67,7 +68,13 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'city_name' => 'required',
+        ]);
+        $city = City::where('city_id','=',$id);
+        $city->update(['city_name' => $request->city_name]);
+        
+        return redirect('/cities/' . $city->first()->country_id)->with('success');
     }
 
     /**
@@ -78,7 +85,10 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::where('city_id', '=', $id);
+        $country_id = $city->first()->country_id;
+        $city->delete();
+        return redirect('cities/' . $country_id)->with('success');
     }
     
     public function new($id) {
